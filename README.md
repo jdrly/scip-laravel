@@ -10,7 +10,8 @@ This project is in early development.
 
 The repository is currently bootstrapped with:
 - standalone package identity
-- CLI entrypoint skeleton
+- a working `index` CLI command
+- config-file aware command execution
 - CI setup
 - initial project structure
 - Phase 1 test harness inspired by the original `scip-php` suite
@@ -63,6 +64,42 @@ Older PHP versions are out of scope.
 - local repository checkout
 
 It is explicitly **not** being designed as a normal `require-dev` package inside every indexed Laravel app.
+
+## CLI usage
+
+Current command shape:
+
+```bash
+./bin/scip-laravel index \
+  --project-dir /path/to/project \
+  --output /path/to/index.json
+```
+
+Additional options:
+- `--framework=auto|php|laravel`
+- `--php-version=auto|8.4|8.5`
+- `--memory-limit=1G`
+- `--config=/path/to/scip-laravel.json`
+- Symfony Console global verbosity flags like `-v`, `-vv`, and `-vvv`
+
+Supported config file formats:
+- `.json`
+- `.php` returning an array
+
+Config file keys:
+- `projectDir`
+- `output`
+- `framework`
+- `phpVersion`
+- `memoryLimit`
+
+CLI options override config file values.
+
+### Important current limitation
+
+At this stage, the `index` command writes a deterministic JSON representation of the current internal index model.
+
+That is intentional for early development and regression testing. Final protobuf-backed SCIP output will come in later phases.
 
 ## Development
 

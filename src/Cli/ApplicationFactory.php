@@ -12,6 +12,9 @@ final class ApplicationFactory
 
     public static function create(): Application
     {
-        return new Application('scip-laravel', self::VERSION);
+        $application = new Application('scip-laravel', self::VERSION);
+        $application->addCommands([new IndexCommand()]);
+
+        return $application;
     }
 }

@@ -15,5 +15,6 @@ final class ApplicationFactoryTest extends TestCase
 
         self::assertSame('scip-laravel', $application->getName());
         self::assertSame(ApplicationFactory::VERSION, $application->getVersion());
+        self::assertTrue($application->has('index'));
     }
 }

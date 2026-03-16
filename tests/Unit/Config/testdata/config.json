@@ -1,0 +1,7 @@
+{
+    "projectDir": "/tmp/project-from-config",
+    "output": "/tmp/output-from-config.json",
+    "framework": "laravel",
+    "phpVersion": "8.5",
+    "memoryLimit": "512M"
+}
