@@ -1,0 +1,6 @@
+fixture: plain-php-modern
+package: fixtures/plain-php-modern
+vendor-dir: vendor
+has-composer-lock: yes
+php-files:
+- src/ExampleClass.php (2 statements)

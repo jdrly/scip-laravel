@@ -11,9 +11,11 @@ This project is in early development.
 The repository is currently bootstrapped with:
 - standalone package identity
 - CLI entrypoint skeleton
-- baseline test tooling
 - CI setup
 - initial project structure
+- Phase 1 test harness inspired by the original `scip-php` suite
+- unit, integration, and snapshot test layers
+- a minimal plain PHP fixture used for deterministic regression checks
 
 The actual Laravel-aware indexing implementation is still in progress.
 
@@ -79,6 +81,9 @@ Available scripts:
 - `composer phpstan`
 - `composer phpcs`
 - `composer test`
+- `composer test-unit`
+- `composer test-integration`
+- `composer test-snapshot`
 - `composer lint`
 - `composer check`
 

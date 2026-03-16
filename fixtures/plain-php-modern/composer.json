@@ -1,0 +1,8 @@
+{
+    "name": "fixtures/plain-php-modern",
+    "autoload": {
+        "psr-4": {
+            "Fixture\\PlainPhp\\": "src/"
+        }
+    }
+}

@@ -63,6 +63,9 @@
         "phpstan": "phpstan analyse --memory-limit=1G",
         "phpcs": "phpcs",
         "test": "phpunit --no-coverage",
+        "test-unit": "phpunit --testsuite unit --no-coverage",
+        "test-integration": "phpunit --testsuite integration --no-coverage",
+        "test-snapshot": "phpunit --testsuite snapshot --no-coverage",
         "lint": [
             "@composer-validate",
             "@phpstan",

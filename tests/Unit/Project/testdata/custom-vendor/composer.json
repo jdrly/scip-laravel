@@ -1,0 +1,6 @@
+{
+    "name": "tests/custom-vendor-project",
+    "config": {
+        "vendor-dir": "tools/vendor"
+    }
+}
