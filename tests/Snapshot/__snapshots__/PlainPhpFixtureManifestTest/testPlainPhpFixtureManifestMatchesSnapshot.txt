@@ -4,3 +4,5 @@ vendor-dir: vendor
 has-composer-lock: yes
 php-files:
 - src/ExampleClass.php (2 statements)
+- src/HelperService.php (2 statements)
+- src/functions.php (2 statements)

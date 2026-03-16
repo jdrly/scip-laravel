@@ -3,6 +3,9 @@
     "autoload": {
         "psr-4": {
             "Fixture\\PlainPhp\\": "src/"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
     }
 }

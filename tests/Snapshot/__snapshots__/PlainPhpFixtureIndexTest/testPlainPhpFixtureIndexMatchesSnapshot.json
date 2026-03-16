@@ -1,0 +1,223 @@
+{
+    "documents": [
+        {
+            "occurrences": [
+                {
+                    "range": [
+                        6,
+                        12,
+                        6,
+                        24
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#",
+                    "syntaxKind": "type"
+                },
+                {
+                    "range": [
+                        8,
+                        19,
+                        8,
+                        26
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#$suffix.",
+                    "syntaxKind": "property"
+                },
+                {
+                    "range": [
+                        10,
+                        20,
+                        10,
+                        25
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#greet().",
+                    "syntaxKind": "method"
+                },
+                {
+                    "range": [
+                        12,
+                        22,
+                        12,
+                        35
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/HelperService#",
+                    "syntaxKind": "type"
+                },
+                {
+                    "range": [
+                        14,
+                        24,
+                        14,
+                        30
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/HelperService#format().",
+                    "syntaxKind": "method"
+                },
+                {
+                    "range": [
+                        14,
+                        49,
+                        14,
+                        55
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#$suffix.",
+                    "syntaxKind": "property"
+                },
+                {
+                    "range": [
+                        17,
+                        27,
+                        17,
+                        31
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#make().",
+                    "syntaxKind": "method"
+                },
+                {
+                    "range": [
+                        17,
+                        35,
+                        17,
+                        47
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#",
+                    "syntaxKind": "type"
+                },
+                {
+                    "range": [
+                        19,
+                        19,
+                        19,
+                        31
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#",
+                    "syntaxKind": "type"
+                }
+            ],
+            "relativePath": "src/ExampleClass.php",
+            "symbols": [
+                {
+                    "kind": "class",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#"
+                },
+                {
+                    "kind": "property",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#$suffix."
+                },
+                {
+                    "kind": "method",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#greet()."
+                },
+                {
+                    "kind": "method",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#make()."
+                }
+            ]
+        },
+        {
+            "occurrences": [
+                {
+                    "range": [
+                        6,
+                        12,
+                        6,
+                        25
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/HelperService#",
+                    "syntaxKind": "type"
+                },
+                {
+                    "range": [
+                        8,
+                        20,
+                        8,
+                        26
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/HelperService#format().",
+                    "syntaxKind": "method"
+                }
+            ],
+            "relativePath": "src/HelperService.php",
+            "symbols": [
+                {
+                    "kind": "class",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/HelperService#"
+                },
+                {
+                    "kind": "method",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/HelperService#format()."
+                }
+            ]
+        },
+        {
+            "occurrences": [
+                {
+                    "range": [
+                        6,
+                        9,
+                        6,
+                        21
+                    ],
+                    "role": "definition",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/make_example().",
+                    "syntaxKind": "function"
+                },
+                {
+                    "range": [
+                        6,
+                        25,
+                        6,
+                        37
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#",
+                    "syntaxKind": "type"
+                },
+                {
+                    "range": [
+                        8,
+                        11,
+                        8,
+                        23
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#",
+                    "syntaxKind": "type"
+                },
+                {
+                    "range": [
+                        8,
+                        25,
+                        8,
+                        29
+                    ],
+                    "role": "reference",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/ExampleClass#make().",
+                    "syntaxKind": "method"
+                }
+            ],
+            "relativePath": "src/functions.php",
+            "symbols": [
+                {
+                    "kind": "function",
+                    "symbol": "scip-laravel composer fixtures/plain-php-modern dev Fixture/PlainPhp/make_example()."
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "projectRoot": "file:///Users/jd/Development/personal/scip-laravel/fixtures/plain-php-modern",
+        "toolName": "scip-laravel",
+        "toolVersion": "0.1.0-dev"
+    }
+}

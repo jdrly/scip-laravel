@@ -16,6 +16,8 @@ The repository is currently bootstrapped with:
 - Phase 1 test harness inspired by the original `scip-php` suite
 - unit, integration, and snapshot test layers
 - a minimal plain PHP fixture used for deterministic regression checks
+- a Phase 2 core PHP indexing foundation
+- deterministic JSON-based index snapshots for the plain PHP fixture
 
 The actual Laravel-aware indexing implementation is still in progress.
 

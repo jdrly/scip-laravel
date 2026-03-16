@@ -67,11 +67,17 @@ That split is borrowed directly from the spirit of the original `scip-php` suite
 - `composer test-snapshot`
 - `composer check`
 
-## Phase 1 outcome
+## Phase 1 and Phase 2 outcome
 
-Phase 1 establishes the harness we will build on in later phases:
+Phase 1 established the harness we build on in later phases:
 - reusable fixture helpers
 - parser edge-case coverage
 - symbol naming coverage
 - Composer project discovery coverage
 - snapshot infrastructure with committed golden files
+
+Phase 2 adds the first real indexing layer on top of that harness:
+- AST traversal
+- basic symbol definitions and references
+- minimal type-resolution scaffolding
+- deterministic index output for the plain PHP fixture

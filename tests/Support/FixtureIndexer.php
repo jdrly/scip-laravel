@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Support;
 
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
+use ScipLaravel\Core\ProjectIndexer;
 use ScipLaravel\Php\Parser;
 use ScipLaravel\Project\ComposerProjectReader;
-use SplFileInfo;
-
-use function array_values;
-use function sort;
+use ScipLaravel\Project\ProjectFileFinder;
 
 final class FixtureIndexer
 {
@@ -20,7 +16,7 @@ final class FixtureIndexer
         $rootPath = FixturePaths::fixture($fixtureName);
         $project = (new ComposerProjectReader())->read($rootPath);
         $parser = new Parser();
-        $phpFiles = self::phpFiles($rootPath);
+        $phpFiles = (new ProjectFileFinder())->phpFiles($project);
 
         $lines = [
             'fixture: ' . $fixtureName,
@@ -39,27 +35,8 @@ final class FixtureIndexer
         return implode("\n", $lines) . "\n";
     }
 
-    /** @return list<string> */
-    private static function phpFiles(string $rootPath): array
+    public static function indexAsJson(string $fixtureName): string
     {
-        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($rootPath));
-        $phpFiles = [];
-
-        foreach ($iterator as $file) {
-            if (!$file instanceof SplFileInfo || !$file->isFile() || $file->getExtension() !== 'php') {
-                continue;
-            }
-
-            $realPath = $file->getRealPath();
-            if ($realPath === false || str_contains($realPath, DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR)) {
-                continue;
-            }
-
-            $phpFiles[] = $realPath;
-        }
-
-        sort($phpFiles);
-
-        return $phpFiles;
+        return (new ProjectIndexer())->index(FixturePaths::fixture($fixtureName))->toJson();
     }
 }
