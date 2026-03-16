@@ -31,6 +31,8 @@ The target scope for this project is:
 
 This project is intended to run as a standalone tool. It should not require being added to the target Laravel application's dependency graph.
 
+The current tooling and tests are designed so indexing works against project paths outside this repository, which is important for local installs, Docker execution, and future packaged distributions.
+
 ## Minimal requirements
 
 ### Runtime requirements

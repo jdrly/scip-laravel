@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use ScipLaravel\Cli\IndexCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 use Tests\Support\FixturePaths;
+use Tests\Support\TemporaryProject;
 
 final class IndexCommandTest extends TestCase
 {
@@ -50,5 +51,36 @@ final class IndexCommandTest extends TestCase
             $help,
         );
         self::assertStringContainsString('CLI options override config file values.', $help);
+    }
+
+    public function testCommandIndexesProjectCopiedOutsideRepository(): void
+    {
+        $temporaryProjectPath = TemporaryProject::copyFixture('plain-php-modern');
+        $outputPath = sys_get_temp_dir() . '/scip-laravel-index-command-external-test.json';
+        if (is_file($outputPath)) {
+            unlink($outputPath);
+        }
+
+        try {
+            $tester = new CommandTester(new IndexCommand());
+            $exitCode = $tester->execute([
+                '--project-dir' => $temporaryProjectPath,
+                '--output' => $outputPath,
+                '--framework' => 'php',
+                '--php-version' => '8.4',
+            ]);
+
+            self::assertSame(0, $exitCode);
+            self::assertFileExists($outputPath);
+            self::assertStringContainsString(
+                '"projectRoot": "file://' . $temporaryProjectPath . '"',
+                (string) file_get_contents($outputPath),
+            );
+        } finally {
+            if (is_file($outputPath)) {
+                unlink($outputPath);
+            }
+            TemporaryProject::remove($temporaryProjectPath);
+        }
     }
 }

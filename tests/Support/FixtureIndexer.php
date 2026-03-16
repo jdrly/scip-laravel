@@ -39,12 +39,16 @@ final class FixtureIndexer
 
     public static function indexAsJson(string $fixtureName): string
     {
-        $fixturePath = FixturePaths::fixture($fixtureName);
-        $json = (new ProjectIndexer())->index($fixturePath)->toJson();
+        return self::indexProjectAsJson(FixturePaths::fixture($fixtureName), $fixtureName);
+    }
+
+    public static function indexProjectAsJson(string $projectPath, string $snapshotProjectName): string
+    {
+        $json = (new ProjectIndexer())->index($projectPath)->toJson();
 
         return str_replace(
-            'file://' . $fixturePath,
-            'file://__FIXTURE_ROOT__/' . $fixtureName,
+            'file://' . $projectPath,
+            'file://__FIXTURE_ROOT__/' . $snapshotProjectName,
             $json,
         );
     }

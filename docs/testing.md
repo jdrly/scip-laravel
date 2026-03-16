@@ -74,12 +74,21 @@ That split is borrowed directly from the spirit of the original `scip-php` suite
 
 We now use Docker as the canonical local way to validate both supported PHP runtimes.
 
-That matters because Phase 4 and later phases should not be considered done unless the project actually passes on both PHP 8.4 and PHP 8.5, not just the host PHP version.
+That matters because later phases should not be considered done unless the project actually passes on both PHP 8.4 and PHP 8.5, not just the host PHP version.
 
 The Docker matrix runner builds a clean image for each PHP version and executes:
 - `composer install`
 - `composer check`
 - `composer audit --locked --no-interaction`
+
+## Runtime decoupling checks
+
+We also verify that indexing works against temporary project copies outside the repository root.
+
+That guards against accidental assumptions like:
+- runtime resources being resolved relative to the indexed project
+- builtin stubs being looked up from the target project's vendor tree
+- test snapshots depending on machine-specific absolute paths
 
 ## Phase 1 and Phase 2 outcome
 

@@ -45,4 +45,13 @@ final class BuiltinSymbolIndexTest extends TestCase
         self::assertFileExists($classStubPath);
         self::assertFileExists($enumStubPath);
     }
+
+    public function testStubPathResolutionDoesNotDependOnIndexedProjectLocation(): void
+    {
+        $stubPath = $this->index->stubPathFor('request_parse_body');
+
+        self::assertNotNull($stubPath);
+        self::assertStringContainsString('phpstorm-stubs', $stubPath);
+        self::assertStringNotContainsString('/fixtures/plain-php-modern/', $stubPath);
+    }
 }
