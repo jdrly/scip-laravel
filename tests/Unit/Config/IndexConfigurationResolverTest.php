@@ -37,68 +37,67 @@ final class IndexConfigurationResolverTest extends TestCase
         self::assertSame('php', $configuration->framework);
         self::assertSame('8.4', $configuration->phpVersion);
         self::assertSame('768M', $configuration->memoryLimit);
+        self::assertSame('json', $configuration->format);
     }
 
     public function testResolveUsesConfigFileValues(): void
     {
         $projectDir = FixturePaths::fixture('plain-php-modern');
-        $configPath = tempnam(sys_get_temp_dir(), 'scip-laravel-config-');
-        self::assertNotFalse($configPath);
-        $jsonConfigPath = $configPath . '.json';
-        rename($configPath, $jsonConfigPath);
+        $configPath = $this->temporaryConfigPath();
 
-        file_put_contents($jsonConfigPath, json_encode([
+        file_put_contents($configPath, json_encode([
             'projectDir' => $projectDir,
-            'output' => '/tmp/config-index.json',
+            'output' => '/tmp/config-index.scip',
             'framework' => 'laravel',
             'phpVersion' => '8.5',
             'memoryLimit' => '512M',
+            'format' => 'scip',
         ], JSON_THROW_ON_ERROR));
 
         try {
             $configuration = $this->resolver->resolve($this->createInput([
-                '--config' => $jsonConfigPath,
+                '--config' => $configPath,
             ]));
         } finally {
-            unlink($jsonConfigPath);
+            unlink($configPath);
         }
 
         self::assertSame($projectDir, $configuration->projectDir);
-        self::assertSame('/tmp/config-index.json', $configuration->outputPath);
+        self::assertSame('/tmp/config-index.scip', $configuration->outputPath);
         self::assertSame('laravel', $configuration->framework);
         self::assertSame('8.5', $configuration->phpVersion);
         self::assertSame('512M', $configuration->memoryLimit);
+        self::assertSame('scip', $configuration->format);
     }
 
     public function testResolveLetsCliOverrideConfigFileValues(): void
     {
         $projectDir = FixturePaths::fixture('plain-php-modern');
-        $configPath = tempnam(sys_get_temp_dir(), 'scip-laravel-config-');
-        self::assertNotFalse($configPath);
-        $jsonConfigPath = $configPath . '.json';
-        rename($configPath, $jsonConfigPath);
+        $configPath = $this->temporaryConfigPath();
 
-        file_put_contents($jsonConfigPath, json_encode([
+        file_put_contents($configPath, json_encode([
             'projectDir' => $projectDir,
-            'output' => '/tmp/config-index.json',
+            'output' => '/tmp/config-index.scip',
             'framework' => 'laravel',
             'phpVersion' => '8.5',
             'memoryLimit' => '512M',
+            'format' => 'scip',
         ], JSON_THROW_ON_ERROR));
 
         try {
             $configuration = $this->resolver->resolve($this->createInput([
-                '--config' => $jsonConfigPath,
+                '--config' => $configPath,
                 '--output' => '/tmp/cli-index.json',
                 '--framework' => 'php',
             ]));
         } finally {
-            unlink($jsonConfigPath);
+            unlink($configPath);
         }
 
         self::assertSame('/tmp/cli-index.json', $configuration->outputPath);
         self::assertSame('php', $configuration->framework);
         self::assertSame('8.5', $configuration->phpVersion);
+        self::assertSame('scip', $configuration->format);
     }
 
     public function testResolveThrowsForMissingRequiredOptions(): void
@@ -127,5 +126,15 @@ final class IndexConfigurationResolverTest extends TestCase
     private function createInput(array $parameters): ArrayInput
     {
         return new ArrayInput($parameters, (new IndexCommand())->getDefinition());
+    }
+
+    private function temporaryConfigPath(): string
+    {
+        $configPath = tempnam(sys_get_temp_dir(), 'scip-laravel-config-');
+        self::assertNotFalse($configPath);
+        $jsonConfigPath = $configPath . '.json';
+        rename($configPath, $jsonConfigPath);
+
+        return $jsonConfigPath;
     }
 }

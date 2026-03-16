@@ -12,6 +12,7 @@ final readonly class IndexConfiguration
         public string $framework,
         public string $phpVersion,
         public string $memoryLimit,
+        public string $format,
     ) {
     }
 }

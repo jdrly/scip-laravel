@@ -19,6 +19,8 @@ final class IndexConfigurationResolver
 
     private const array PHP_VERSIONS = ['auto', '8.4', '8.5'];
 
+    private const array FORMATS = ['json', 'scip'];
+
     public function __construct(private readonly ConfigFileLoader $configFileLoader = new ConfigFileLoader())
     {
     }
@@ -53,6 +55,11 @@ final class IndexConfigurationResolver
             $this->stringOption($input, 'memory-limit') ?? $this->stringConfig($fileConfig, 'memoryLimit') ?? '1G',
             'memory-limit',
         );
+        $format = $this->validatedValue(
+            $this->stringOption($input, 'format') ?? $this->stringConfig($fileConfig, 'format') ?? 'json',
+            self::FORMATS,
+            'format',
+        );
 
         $normalizedProjectDir = realpath($projectDir);
         if ($normalizedProjectDir === false) {
@@ -65,6 +72,7 @@ final class IndexConfigurationResolver
             framework: $framework,
             phpVersion: $phpVersion,
             memoryLimit: $memoryLimit,
+            format: $format,
         );
     }
 
@@ -80,6 +88,7 @@ final class IndexConfigurationResolver
         }
 
         $trimmedValue = trim($value);
+
         return $trimmedValue === '' ? null : $trimmedValue;
     }
 
@@ -96,6 +105,7 @@ final class IndexConfigurationResolver
         }
 
         $trimmedValue = trim($value);
+
         return $trimmedValue === '' ? null : $trimmedValue;
     }
 

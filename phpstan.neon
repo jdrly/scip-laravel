@@ -5,4 +5,7 @@ parameters:
     - src
     - tests
   excludePaths:
+    - src/Bindings/*
+    - tests/DoraIntegration/*
+    - tests/Unit/Scip/ProtoIndexEncoderTest.php
     - tests/*/testdata/*

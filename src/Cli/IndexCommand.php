@@ -7,6 +7,7 @@ namespace ScipLaravel\Cli;
 use RuntimeException;
 use ScipLaravel\Config\IndexConfigurationResolver;
 use ScipLaravel\Core\ProjectIndexer;
+use ScipLaravel\Scip\ProtoIndexEncoder;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,6 +24,7 @@ final class IndexCommand extends Command
     public function __construct(
         private readonly IndexConfigurationResolver $configurationResolver = new IndexConfigurationResolver(),
         private readonly ProjectIndexer $projectIndexer = new ProjectIndexer(),
+        private readonly ProtoIndexEncoder $protoIndexEncoder = new ProtoIndexEncoder(),
         private readonly Filesystem $filesystem = new Filesystem(),
     ) {
         parent::__construct();
@@ -46,6 +48,7 @@ final class IndexCommand extends Command
                 'Target PHP version hint: auto, 8.4, or 8.5',
             )
             ->addOption('memory-limit', null, InputOption::VALUE_REQUIRED, 'Memory limit to set before indexing')
+            ->addOption('format', null, InputOption::VALUE_REQUIRED, 'Output format: json or scip')
             ->addOption('config', null, InputOption::VALUE_REQUIRED, 'Path to a JSON or PHP config file')
             ->setHelp(
                 <<<'HELP'
@@ -53,6 +56,7 @@ Generate an index for a standalone PHP or Laravel project.
 
 Examples:
   scip-laravel index --project-dir /path/to/app --output /tmp/index.json
+  scip-laravel index --project-dir /path/to/app --output /tmp/index.scip --format scip
   scip-laravel index --config ./scip-laravel.json
 
 Config file keys:
@@ -61,6 +65,7 @@ Config file keys:
   framework
   phpVersion
   memoryLimit
+  format
 
 CLI options override config file values.
 HELP,
@@ -77,15 +82,21 @@ HELP,
                 $output->writeln(sprintf('Indexing project: %s', $configuration->projectDir));
                 $output->writeln(sprintf('Framework mode: %s', $configuration->framework));
                 $output->writeln(sprintf('PHP version hint: %s', $configuration->phpVersion));
+                $output->writeln(sprintf('Output format: %s', $configuration->format));
             }
 
             $index = $this->projectIndexer->index($configuration->projectDir);
-            $this->filesystem->dumpFile($configuration->outputPath, $index->toJson());
+            $contents = $configuration->format === 'scip'
+                ? $this->protoIndexEncoder->encode($index)
+                : $index->toJson();
 
+            $this->filesystem->dumpFile($configuration->outputPath, $contents);
             $output->writeln(sprintf('Index written to %s', $configuration->outputPath));
+
             return Command::SUCCESS;
         } catch (RuntimeException $exception) {
             $output->writeln(sprintf('<error>%s</error>', $exception->getMessage()));
+
             return Command::FAILURE;
         }
     }

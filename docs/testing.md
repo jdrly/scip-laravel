@@ -65,6 +65,7 @@ That split is borrowed directly from the spirit of the original `scip-php` suite
 - `composer test-unit`
 - `composer test-integration`
 - `composer test-snapshot`
+- `composer test-dora`
 - `composer check`
 - `composer check-docker-8.4`
 - `composer check-docker-8.5`

@@ -143,6 +143,10 @@ Available scripts:
 - `composer test-unit`
 - `composer test-integration`
 - `composer test-snapshot`
+- `composer test-dora`
+- `composer check-docker-8.4`
+- `composer check-docker-8.5`
+- `composer check-matrix`
 - `composer lint`
 - `composer check`
 
