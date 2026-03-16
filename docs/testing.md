@@ -66,6 +66,20 @@ That split is borrowed directly from the spirit of the original `scip-php` suite
 - `composer test-integration`
 - `composer test-snapshot`
 - `composer check`
+- `composer check-docker-8.4`
+- `composer check-docker-8.5`
+- `composer check-matrix`
+
+## Cross-version validation
+
+We now use Docker as the canonical local way to validate both supported PHP runtimes.
+
+That matters because Phase 4 and later phases should not be considered done unless the project actually passes on both PHP 8.4 and PHP 8.5, not just the host PHP version.
+
+The Docker matrix runner builds a clean image for each PHP version and executes:
+- `composer install`
+- `composer check`
+- `composer audit --locked --no-interaction`
 
 ## Phase 1 and Phase 2 outcome
 
@@ -81,3 +95,8 @@ Phase 2 adds the first real indexing layer on top of that harness:
 - basic symbol definitions and references
 - minimal type-resolution scaffolding
 - deterministic index output for the plain PHP fixture
+
+Phase 4 extends the parser-focused safety net with:
+- PHPDoc parsing tests using `phpstan/phpdoc-parser` v2 setup
+- builtin symbol resolution tests backed by `jetbrains/phpstorm-stubs`
+- regression checks for modern builtin symbols such as `request_parse_body`, `Dom\\HTMLDocument`, and `RoundingMode`

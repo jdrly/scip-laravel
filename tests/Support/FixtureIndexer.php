@@ -9,6 +9,8 @@ use ScipLaravel\Php\Parser;
 use ScipLaravel\Project\ComposerProjectReader;
 use ScipLaravel\Project\ProjectFileFinder;
 
+use function str_replace;
+
 final class FixtureIndexer
 {
     public static function summarize(string $fixtureName): string
@@ -37,6 +39,13 @@ final class FixtureIndexer
 
     public static function indexAsJson(string $fixtureName): string
     {
-        return (new ProjectIndexer())->index(FixturePaths::fixture($fixtureName))->toJson();
+        $fixturePath = FixturePaths::fixture($fixtureName);
+        $json = (new ProjectIndexer())->index($fixturePath)->toJson();
+
+        return str_replace(
+            'file://' . $fixturePath,
+            'file://__FIXTURE_ROOT__/' . $fixtureName,
+            $json,
+        );
     }
 }

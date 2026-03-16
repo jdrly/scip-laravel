@@ -19,6 +19,7 @@ The repository is currently bootstrapped with:
 - a minimal plain PHP fixture used for deterministic regression checks
 - a Phase 2 core PHP indexing foundation
 - deterministic JSON-based index snapshots for the plain PHP fixture
+- Phase 4 parsing utilities for PHPDoc v2 and builtin symbol stub lookups
 
 The actual Laravel-aware indexing implementation is still in progress.
 
@@ -100,6 +101,18 @@ CLI options override config file values.
 At this stage, the `index` command writes a deterministic JSON representation of the current internal index model.
 
 That is intentional for early development and regression testing. Final protobuf-backed SCIP output will come in later phases.
+
+## Cross-version validation
+
+This repository supports local Docker-based validation for both supported PHP runtimes:
+
+```bash
+composer check-docker-8.4
+composer check-docker-8.5
+composer check-matrix
+```
+
+These commands build a clean container, install dependencies, and run the full quality gate inside PHP 8.4 and PHP 8.5 environments.
 
 ## Development
 

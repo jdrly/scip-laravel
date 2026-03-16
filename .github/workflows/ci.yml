@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction --no-progress
 
-      - name: Run tests
-        run: composer test
+      - name: Run quality gate
+        run: composer check
 
   lint:
     runs-on: ubuntu-latest

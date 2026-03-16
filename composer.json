@@ -66,6 +66,9 @@
         "test-unit": "phpunit --testsuite unit --no-coverage",
         "test-integration": "phpunit --testsuite integration --no-coverage",
         "test-snapshot": "phpunit --testsuite snapshot --no-coverage",
+        "check-docker-8.4": "bash tools/docker/check.sh 8.4",
+        "check-docker-8.5": "bash tools/docker/check.sh 8.5",
+        "check-matrix": "bash tools/docker/check-matrix.sh",
         "lint": [
             "@composer-validate",
             "@phpstan",
