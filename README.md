@@ -121,6 +121,55 @@ composer check-matrix
 
 These commands build a clean container, install dependencies, and run the full quality gate inside PHP 8.4 and PHP 8.5 environments.
 
+## Release artifacts
+
+Release-oriented commands:
+- `composer build-runtime-image`
+- `composer build-standalone`
+- `composer smoke-test-runtime-image`
+- `composer smoke-test-standalone`
+- `composer smoke-test-release-artifacts`
+
+See `docs/releases.md` for the release workflow, versioning strategy, and changelog policy.
+
+## Installation and distribution
+
+### Docker image
+
+Build a runtime image locally:
+
+```bash
+composer build-runtime-image
+```
+
+Run the image against a project mounted from the host:
+
+```bash
+docker run --rm \
+  -v /path/to/project:/workspace/project:ro \
+  -v /path/to/out:/workspace/out \
+  scip-laravel:8.5 \
+  index \
+  --project-dir /workspace/project \
+  --output /workspace/out/index.scip \
+  --format scip \
+  --framework laravel
+```
+
+### Standalone bundle
+
+Build a standalone tarball bundle locally:
+
+```bash
+composer build-standalone
+```
+
+Smoke-test the generated bundle:
+
+```bash
+composer smoke-test-standalone
+```
+
 ## Development
 
 Install dependencies:

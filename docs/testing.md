@@ -70,6 +70,11 @@ That split is borrowed directly from the spirit of the original `scip-php` suite
 - `composer check-docker-8.4`
 - `composer check-docker-8.5`
 - `composer check-matrix`
+- `composer build-runtime-image`
+- `composer build-standalone`
+- `composer smoke-test-runtime-image`
+- `composer smoke-test-standalone`
+- `composer smoke-test-release-artifacts`
 
 ## Cross-version validation
 
