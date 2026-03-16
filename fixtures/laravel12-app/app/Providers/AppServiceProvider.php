@@ -20,6 +20,8 @@ final class AppServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->app->bind(User::class, Post::class);
         $this->app->singleton(User::class, Post::class);
+        $this->app->scoped(Post::class, User::class);
     }
 }

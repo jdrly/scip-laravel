@@ -128,3 +128,11 @@ Phase 7 adds Laravel route-analysis coverage with:
 - `Route::controller(...)->group(...)` method linking
 - `Route::resource`, `Route::apiResource`, and `Route::resources` convention expansion
 - route-document snapshots for supported forms
+
+Phase 8 adds provider and container coverage with:
+- bootstrap provider registration detection
+- `$bindings` and `$singletons` property extraction
+- `$this->app->bind|singleton|scoped(...)` extraction
+- `App::bind|singleton(...)` extraction
+- reusable provider binding map construction
+- provider-document snapshots and integration checks

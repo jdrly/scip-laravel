@@ -1,0 +1,17 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                5,
+                4,
+                5,
+                36
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Providers/AppServiceProvider#",
+            "syntaxKind": "type"
+        }
+    ],
+    "relativePath": "bootstrap/providers.php",
+    "symbols": []
+}

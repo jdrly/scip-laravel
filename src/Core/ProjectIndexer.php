@@ -6,6 +6,9 @@ namespace ScipLaravel\Core;
 
 use PhpParser\Node\Stmt;
 use ScipLaravel\Cli\ApplicationFactory;
+use ScipLaravel\Laravel\ProviderAnalyzer;
+use ScipLaravel\Laravel\ProviderBindingMap;
+use ScipLaravel\Laravel\ProviderBindingMapBuilder;
 use ScipLaravel\Laravel\RouteAnalyzer;
 use ScipLaravel\Php\AstTraverser;
 use ScipLaravel\Php\Parser;
@@ -30,6 +33,7 @@ final class ProjectIndexer
         private readonly Parser $parser = new Parser(),
         private readonly AstTraverser $traverser = new AstTraverser(),
         private readonly SymbolNamer $symbolNamer = new SymbolNamer(),
+        private readonly ?ProviderBindingMapBuilder $providerBindingMapBuilder = null,
     ) {
     }
 
@@ -39,6 +43,10 @@ final class ProjectIndexer
         $project = $projectModel->composerProject;
         $projectVersion = 'dev';
         $documents = [];
+        $providerBindingMap = ($this->providerBindingMapBuilder ?? new ProviderBindingMapBuilder(
+            $this->parser,
+            $this->traverser,
+        ))->build($projectModel);
 
         foreach ($this->fileFinder->phpFiles($project) as $absolutePath) {
             $relativePath = str_replace($project->rootPath . '/', '', $absolutePath);
@@ -58,9 +66,19 @@ final class ProjectIndexer
                 statements: $statements,
             );
 
-            $documents[] = $this->augmentLaravelRouteDocument(
+            $document = $this->augmentLaravelRouteDocument(
                 $document,
                 $projectModel,
+                $projectVersion,
+                $absolutePath,
+                $relativePath,
+                $statements,
+            );
+
+            $documents[] = $this->augmentLaravelProviderDocument(
+                $document,
+                $projectModel,
+                $providerBindingMap,
                 $projectVersion,
                 $absolutePath,
                 $relativePath,
@@ -107,6 +125,45 @@ final class ProjectIndexer
 
         /** @var list<Occurrence> $occurrences */
         $occurrences = [...$document->occurrences, ...$routeOccurrences];
+
+        return new Document(
+            relativePath: $document->relativePath,
+            occurrences: $occurrences,
+            symbols: $document->symbols,
+        );
+    }
+
+    /** @param list<Stmt> $statements */
+    private function augmentLaravelProviderDocument(
+        Document $document,
+        ProjectModel $projectModel,
+        ProviderBindingMap $providerBindingMap,
+        string $projectVersion,
+        string $absolutePath,
+        string $relativePath,
+        array $statements,
+    ): Document {
+        if (
+            $projectModel->framework !== 'laravel'
+            || !in_array($relativePath, $projectModel->providerFiles, true)
+        ) {
+            return $document;
+        }
+
+        $providerOccurrences = (new ProviderAnalyzer(
+            traverser: $this->traverser,
+            symbolNamer: $this->symbolNamer,
+            projectModel: $projectModel,
+            bindingMap: $providerBindingMap,
+            projectVersion: $projectVersion,
+        ))->occurrences($absolutePath, $relativePath, $statements);
+
+        if ($providerOccurrences === []) {
+            return $document;
+        }
+
+        /** @var list<Occurrence> $occurrences */
+        $occurrences = [...$document->occurrences, ...$providerOccurrences];
 
         return new Document(
             relativePath: $document->relativePath,

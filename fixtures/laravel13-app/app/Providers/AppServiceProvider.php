@@ -21,6 +21,7 @@ final class AppServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        App::bind(User::class, Photo::class);
         App::singleton(User::class, Photo::class);
     }
 }

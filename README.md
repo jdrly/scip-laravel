@@ -22,6 +22,7 @@ The repository is currently bootstrapped with:
 - Phase 4 parsing utilities for PHPDoc v2 and builtin symbol stub lookups
 - Phase 6 Laravel 12 and 13 fixtures plus project detection coverage
 - Phase 7 route-to-controller and route-to-method linking for supported static Laravel route forms
+- Phase 8 provider registration and container binding extraction for supported static service-provider patterns
 
 The actual Laravel-aware indexing implementation is still in progress.
 

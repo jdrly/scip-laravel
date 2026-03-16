@@ -1,0 +1,210 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                11,
+                12,
+                11,
+                30
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                11,
+                39,
+                11,
+                54
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/ServiceProvider#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                13,
+                17,
+                13,
+                26
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#$bindings.",
+            "syntaxKind": "property"
+        },
+        {
+            "range": [
+                17,
+                17,
+                17,
+                28
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#$singletons.",
+            "syntaxKind": "property"
+        },
+        {
+            "range": [
+                21,
+                20,
+                21,
+                28
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#register().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                23,
+                8,
+                23,
+                11
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/App#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                23,
+                13,
+                23,
+                17
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/App#bind().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                24,
+                8,
+                24,
+                11
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/App#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                24,
+                13,
+                24,
+                22
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/App#singleton().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                14,
+                8,
+                14,
+                12
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/User#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                14,
+                23,
+                14,
+                28
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/Photo#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                18,
+                8,
+                18,
+                13
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/Photo#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                18,
+                24,
+                18,
+                28
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/User#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                23,
+                18,
+                23,
+                22
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/User#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                23,
+                31,
+                23,
+                36
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/Photo#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                24,
+                23,
+                24,
+                27
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/User#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                24,
+                36,
+                24,
+                41
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Models/Photo#",
+            "syntaxKind": "type"
+        }
+    ],
+    "relativePath": "app/Providers/AppServiceProvider.php",
+    "symbols": [
+        {
+            "kind": "class",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#"
+        },
+        {
+            "kind": "property",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#$bindings."
+        },
+        {
+            "kind": "property",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#$singletons."
+        },
+        {
+            "kind": "method",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Providers/AppServiceProvider#register()."
+        }
+    ]
+}
