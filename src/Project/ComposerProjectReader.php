@@ -9,11 +9,16 @@ use RuntimeException;
 use ScipLaravel\Support\FileReader;
 use Webmozart\Assert\Assert;
 
+use function realpath;
+
 final class ComposerProjectReader
 {
     public function read(string $rootPath): ComposerProject
     {
-        $normalizedRootPath = rtrim($rootPath, DIRECTORY_SEPARATOR);
+        $resolvedRootPath = realpath(rtrim($rootPath, DIRECTORY_SEPARATOR));
+        $normalizedRootPath = $resolvedRootPath === false
+            ? rtrim($rootPath, DIRECTORY_SEPARATOR)
+            : $resolvedRootPath;
         $composerJsonPath = $normalizedRootPath . DIRECTORY_SEPARATOR . 'composer.json';
         $composerLockPath = $normalizedRootPath . DIRECTORY_SEPARATOR . 'composer.lock';
 

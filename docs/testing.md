@@ -109,3 +109,14 @@ Phase 4 extends the parser-focused safety net with:
 - PHPDoc parsing tests using `phpstan/phpdoc-parser` v2 setup
 - builtin symbol resolution tests backed by `jetbrains/phpstorm-stubs`
 - regression checks for modern builtin symbols such as `request_parse_body`, `Dom\\HTMLDocument`, and `RoundingMode`
+
+Phase 5 adds runtime-decoupling checks with:
+- tool-runtime path resolution independent from indexed projects
+- external project indexing tests against temporary fixture copies
+- Docker-backed execution checks that validate clean isolated environments
+
+Phase 6 adds Laravel-oriented fixture coverage with:
+- Laravel 12 and Laravel 13 sample projects under `fixtures/`
+- project-model detection for framework type and Laravel version
+- regression checks for key Laravel directories and files
+- integration checks proving Laravel fixtures can already pass through the current indexing pipeline

@@ -1,0 +1,10 @@
+fixture: laravel12-app
+framework: laravel
+laravel-version: 12
+has-bootstrap-app: yes
+has-bootstrap-providers: yes
+route-files: routes/web.php, routes/api.php, routes/console.php
+provider-files: app/Providers/AppServiceProvider.php, bootstrap/providers.php
+controller-directories: app/Http/Controllers
+model-directories: app/Models
+command-directories: app/Console/Commands

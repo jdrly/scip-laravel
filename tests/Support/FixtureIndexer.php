@@ -8,7 +8,9 @@ use ScipLaravel\Core\ProjectIndexer;
 use ScipLaravel\Php\Parser;
 use ScipLaravel\Project\ComposerProjectReader;
 use ScipLaravel\Project\ProjectFileFinder;
+use ScipLaravel\Project\ProjectModelDetector;
 
+use function implode;
 use function str_replace;
 
 final class FixtureIndexer
@@ -51,5 +53,25 @@ final class FixtureIndexer
             'file://__FIXTURE_ROOT__/' . $snapshotProjectName,
             $json,
         );
+    }
+
+    public static function summarizeProjectModel(string $fixtureName): string
+    {
+        $projectModel = (new ProjectModelDetector())->detect(FixturePaths::fixture($fixtureName));
+
+        $lines = [
+            'fixture: ' . $fixtureName,
+            'framework: ' . $projectModel->framework,
+            'laravel-version: ' . ($projectModel->laravelVersion ?? 'none'),
+            'has-bootstrap-app: ' . ($projectModel->hasBootstrapApp ? 'yes' : 'no'),
+            'has-bootstrap-providers: ' . ($projectModel->hasBootstrapProviders ? 'yes' : 'no'),
+            'route-files: ' . implode(', ', $projectModel->routeFiles),
+            'provider-files: ' . implode(', ', $projectModel->providerFiles),
+            'controller-directories: ' . implode(', ', $projectModel->controllerDirectories),
+            'model-directories: ' . implode(', ', $projectModel->modelDirectories),
+            'command-directories: ' . implode(', ', $projectModel->commandDirectories),
+        ];
+
+        return implode("\n", $lines) . "\n";
     }
 }
