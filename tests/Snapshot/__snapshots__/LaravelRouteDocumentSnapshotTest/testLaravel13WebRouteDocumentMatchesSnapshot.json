@@ -1,0 +1,226 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                9,
+                0,
+                9,
+                5
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                9,
+                7,
+                9,
+                10
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#get().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                10,
+                0,
+                10,
+                5
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                10,
+                7,
+                10,
+                11
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#post().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                11,
+                0,
+                11,
+                5
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                11,
+                7,
+                11,
+                17
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#controller().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                12,
+                4,
+                12,
+                9
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                12,
+                11,
+                12,
+                14
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#get().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                14,
+                0,
+                14,
+                5
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                14,
+                7,
+                14,
+                16
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#resources().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                9,
+                40,
+                9,
+                47
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/HomeController#index().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                10,
+                23,
+                10,
+                44
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/HealthCheckController#__invoke().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                12,
+                25,
+                12,
+                32
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/HomeController#about().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#index().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#create().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#store().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#show().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#edit().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#update().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                15,
+                16,
+                15,
+                31
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#destroy().",
+            "syntaxKind": "method"
+        }
+    ],
+    "relativePath": "routes/web.php",
+    "symbols": []
+}

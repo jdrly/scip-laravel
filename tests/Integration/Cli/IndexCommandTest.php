@@ -72,8 +72,12 @@ final class IndexCommandTest extends TestCase
 
             self::assertSame(0, $exitCode);
             self::assertFileExists($outputPath);
+            $resolvedProjectPath = realpath($temporaryProjectPath);
+            $normalizedProjectPath = $resolvedProjectPath === false
+                ? $temporaryProjectPath
+                : $resolvedProjectPath;
             self::assertStringContainsString(
-                '"projectRoot": "file://' . $temporaryProjectPath . '"',
+                '"projectRoot": "file://' . $normalizedProjectPath . '"',
                 (string) file_get_contents($outputPath),
             );
         } finally {

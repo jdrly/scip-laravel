@@ -20,6 +20,8 @@ The repository is currently bootstrapped with:
 - a Phase 2 core PHP indexing foundation
 - deterministic JSON-based index snapshots for the plain PHP fixture
 - Phase 4 parsing utilities for PHPDoc v2 and builtin symbol stub lookups
+- Phase 6 Laravel 12 and 13 fixtures plus project detection coverage
+- Phase 7 route-to-controller and route-to-method linking for supported static Laravel route forms
 
 The actual Laravel-aware indexing implementation is still in progress.
 

@@ -1,0 +1,83 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                7,
+                0,
+                7,
+                5
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                7,
+                7,
+                7,
+                18
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Route#apiResource().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                7,
+                29,
+                7,
+                44
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#index().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                7,
+                29,
+                7,
+                44
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#store().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                7,
+                29,
+                7,
+                44
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#show().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                7,
+                29,
+                7,
+                44
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#update().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                7,
+                29,
+                7,
+                44
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Http/Controllers/PhotoController#destroy().",
+            "syntaxKind": "method"
+        }
+    ],
+    "relativePath": "routes/api.php",
+    "symbols": []
+}

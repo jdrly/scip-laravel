@@ -120,3 +120,11 @@ Phase 6 adds Laravel-oriented fixture coverage with:
 - project-model detection for framework type and Laravel version
 - regression checks for key Laravel directories and files
 - integration checks proving Laravel fixtures can already pass through the current indexing pipeline
+
+Phase 7 adds Laravel route-analysis coverage with:
+- explicit controller array syntax route linking
+- invokable controller route linking
+- controller-string route linking
+- `Route::controller(...)->group(...)` method linking
+- `Route::resource`, `Route::apiResource`, and `Route::resources` convention expansion
+- route-document snapshots for supported forms

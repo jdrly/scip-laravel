@@ -8,6 +8,7 @@ use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/legacy', 'App\\Http\\Controllers\\HomeController@about');
 Route::post('/health', HealthCheckController::class);
 Route::controller(HomeController::class)->group(function (): void {
     Route::get('/about', 'about');
