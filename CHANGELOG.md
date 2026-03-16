@@ -12,4 +12,4 @@ The format is based on Keep a Changelog and the project uses a SemVer-style vers
 - Release artifact smoke-test scripts.
 
 ### Changed
-- README and release documentation to describe installation and packaging workflows.
+- README and release documentation now declare PHAR as the primary install artifact, GitHub Releases as the main publish channel, Docker as the CI-safe fallback, and the standalone tarball as backup-only.

@@ -1,18 +1,23 @@
 # Release and Distribution
 
-## Supported delivery formats
+## Canonical distribution hierarchy
 
-`scip-laravel` currently supports these release-oriented distribution formats:
-- Docker image
+`scip-laravel` is moving toward one clear install story:
+1. PHAR as the primary standalone artifact
+2. GitHub Releases as the primary publication channel
+3. Homebrew tap as the convenience install for macOS users
+4. Docker image as the CI-safe fallback
+5. standalone tarball bundle as a backup artifact only
+
+This keeps the tool out of the indexed application's Composer graph while still giving users a short, obvious install path.
+
+## Current implementation status
+
+Today the repository can build and smoke-test these release-oriented artifacts:
+- Docker runtime image
 - standalone tarball bundle
 
-The tarball is the current "PHAR or equivalent standalone artifact" for this project. It packages:
-- `bin/`
-- `src/`
-- `vendor/`
-- `composer.json`
-- `composer.lock`
-- `README.md`
+PHAR packaging and GitHub Releases publication are planned next. Until that work lands, the tarball should be treated as a backup artifact rather than the main installation path.
 
 ## Versioning strategy
 
@@ -32,6 +37,18 @@ Changelog entries should be written using these sections:
 - Removed
 
 Conventional Commits should remain the source input for changelog updates.
+
+## Publication model
+
+GitHub Releases is the primary publication channel.
+
+The intended release payload is:
+- `scip-laravel.phar`
+- checksums
+- standalone tarball bundle as backup
+- release notes or changelog excerpt
+
+Docker images remain important, but they are positioned as the reliable fallback for CI and other isolated execution environments.
 
 ## Build commands
 

@@ -61,13 +61,16 @@ That currently means:
 
 Older PHP versions are out of scope.
 
-## Planned delivery model
+## Canonical install story
 
-`scip-laravel` is being built as a standalone tool, with these delivery modes in mind:
-- Docker image
-- PHAR
-- isolated global Composer install
-- local repository checkout
+`scip-laravel` is being built as a standalone tool with this install and distribution order:
+1. PHAR as the primary standalone artifact
+2. GitHub Releases as the primary publication channel
+3. Homebrew tap as the convenience install for macOS users
+4. Docker image as the CI-safe fallback
+5. standalone tarball bundle as a backup artifact only
+
+That is the canonical direction for the project. It keeps the install surface small and avoids adding `scip-laravel` to the target Laravel application's Composer graph.
 
 It is explicitly **not** being designed as a normal `require-dev` package inside every indexed Laravel app.
 
@@ -123,18 +126,40 @@ These commands build a clean container, install dependencies, and run the full q
 
 ## Release artifacts
 
-Release-oriented commands:
+Current release-oriented commands:
 - `composer build-runtime-image`
 - `composer build-standalone`
 - `composer smoke-test-runtime-image`
 - `composer smoke-test-standalone`
 - `composer smoke-test-release-artifacts`
 
-See `docs/releases.md` for the release workflow, versioning strategy, and changelog policy.
+These scripts currently cover the Docker runtime image and the backup standalone tarball bundle. PHAR packaging is the next planned release artifact so the install story can converge on one primary path.
+
+See `docs/releases.md` for the release workflow, versioning strategy, and distribution plan.
 
 ## Installation and distribution
 
-### Docker image
+### Recommended install order
+
+For end users, the install guidance is:
+1. PHAR from GitHub Releases
+2. Homebrew tap
+3. Docker image for CI-safe and isolated execution
+4. standalone tarball bundle only when the primary artifacts are not suitable
+
+### Primary install path: PHAR from GitHub Releases
+
+This is the canonical install story for the project once PHAR packaging lands:
+
+```bash
+curl -L <release-url>/scip-laravel.phar -o /usr/local/bin/scip-laravel
+chmod +x /usr/local/bin/scip-laravel
+scip-laravel index
+```
+
+GitHub Releases is the primary publication channel for that artifact.
+
+### CI-safe fallback: Docker image
 
 Build a runtime image locally:
 
@@ -156,7 +181,9 @@ docker run --rm \
   --framework laravel
 ```
 
-### Standalone bundle
+### Backup artifact: standalone tarball bundle
+
+The standalone tarball is kept as a backup release artifact. It is not the recommended day-to-day install path.
 
 Build a standalone tarball bundle locally:
 
@@ -169,6 +196,10 @@ Smoke-test the generated bundle:
 ```bash
 composer smoke-test-standalone
 ```
+
+### Current implementation status
+
+Today this repository can build the Docker image and the standalone tarball locally. PHAR packaging and GitHub Releases publication are the next planned steps; until those land, use a source checkout for local development workflows.
 
 ## Development
 
@@ -202,4 +233,3 @@ Available scripts:
 ## Notes
 
 The old `scip-php` repository is used only as a reference source for ideas and test strategy. This project is being built as its own standalone implementation.
-t as its own standalone implementation.
