@@ -1,0 +1,48 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                6,
+                12,
+                6,
+                29
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Console/Commands/SyncPhotosCommand#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                8,
+                21,
+                8,
+                31
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Console/Commands/SyncPhotosCommand#$signature.",
+            "syntaxKind": "property"
+        },
+        {
+            "range": [
+                8,
+                34,
+                8,
+                47
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Console/Commands/SyncPhotosCommand#",
+            "syntaxKind": "string"
+        }
+    ],
+    "relativePath": "app/Console/Commands/SyncPhotosCommand.php",
+    "symbols": [
+        {
+            "kind": "class",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Console/Commands/SyncPhotosCommand#"
+        },
+        {
+            "kind": "property",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Console/Commands/SyncPhotosCommand#$signature."
+        }
+    ]
+}

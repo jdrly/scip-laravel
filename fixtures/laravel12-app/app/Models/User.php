@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 final class User
 {
-    public function posts(): array
+    public function posts(): HasMany
     {
-        return [];
+        return $this->hasMany(Post::class);
     }
 }

@@ -1,0 +1,70 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                8,
+                12,
+                8,
+                16
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Models/User#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                10,
+                20,
+                10,
+                25
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Models/User#posts().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                10,
+                29,
+                10,
+                36
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev Illuminate/Database/Eloquent/Relations/HasMany#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                12,
+                22,
+                12,
+                29
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Models/User#hasMany().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                12,
+                30,
+                12,
+                34
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Models/Post#",
+            "syntaxKind": "type"
+        }
+    ],
+    "relativePath": "app/Models/User.php",
+    "symbols": [
+        {
+            "kind": "class",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Models/User#"
+        },
+        {
+            "kind": "method",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Models/User#posts()."
+        }
+    ]
+}

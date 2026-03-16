@@ -59,7 +59,11 @@ final class ProviderAnalyzer
             public function enterNode(Node $node): ?Node
             {
                 foreach (
-                    $this->analyzer->analyzeNode($node, $this->relativePath, $this->positionResolver) as $occurrence
+                    $this->analyzer->analyzeNode(
+                        $node,
+                        $this->relativePath,
+                        $this->positionResolver,
+                    ) as $occurrence
                 ) {
                     $this->occurrences[] = $occurrence;
                 }
@@ -87,7 +91,8 @@ final class ProviderAnalyzer
             return [];
         }
 
-        if ($this->bindingMap->forSourcePath($relativePath) === []) {
+        $definitions = $this->bindingMap->forSourcePath($relativePath);
+        if ($definitions === []) {
             return [];
         }
 
@@ -168,10 +173,7 @@ final class ProviderAnalyzer
             }
         }
 
-        /** @var list<Occurrence> $occurrences */
-        $occurrences = $this->bindingOccurrencesFromArgs($args, $positionResolver);
-
-        return $occurrences;
+        return $this->bindingOccurrencesFromArgs($args, $positionResolver);
     }
 
     /** @return list<Occurrence> */
@@ -199,10 +201,7 @@ final class ProviderAnalyzer
             }
         }
 
-        /** @var list<Occurrence> $occurrences */
-        $occurrences = $this->bindingOccurrencesFromArgs($args, $positionResolver);
-
-        return $occurrences;
+        return $this->bindingOccurrencesFromArgs($args, $positionResolver);
     }
 
     /** @return list<Occurrence> */

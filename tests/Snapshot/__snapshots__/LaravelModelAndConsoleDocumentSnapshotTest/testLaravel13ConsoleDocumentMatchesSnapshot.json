@@ -1,0 +1,39 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                6,
+                0,
+                6,
+                7
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Artisan#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                6,
+                9,
+                6,
+                16
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev Illuminate/Support/Facades/Artisan#command().",
+            "syntaxKind": "method"
+        },
+        {
+            "range": [
+                6,
+                17,
+                6,
+                30
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel13-app dev App/Console/Commands/SyncPhotosCommand#",
+            "syntaxKind": "string"
+        }
+    ],
+    "relativePath": "routes/console.php",
+    "symbols": []
+}

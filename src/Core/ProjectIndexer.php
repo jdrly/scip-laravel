@@ -6,6 +6,10 @@ namespace ScipLaravel\Core;
 
 use PhpParser\Node\Stmt;
 use ScipLaravel\Cli\ApplicationFactory;
+use ScipLaravel\Laravel\CommandRegistry;
+use ScipLaravel\Laravel\CommandRegistryBuilder;
+use ScipLaravel\Laravel\ConsoleAnalyzer;
+use ScipLaravel\Laravel\EloquentAnalyzer;
 use ScipLaravel\Laravel\ProviderAnalyzer;
 use ScipLaravel\Laravel\ProviderBindingMap;
 use ScipLaravel\Laravel\ProviderBindingMapBuilder;
@@ -24,6 +28,7 @@ use ScipLaravel\Scip\SymbolNamer;
 
 use function in_array;
 use function str_replace;
+use function str_starts_with;
 
 final class ProjectIndexer
 {
@@ -42,11 +47,18 @@ final class ProjectIndexer
         $projectModel = $this->projectModelDetector->detect($projectRoot);
         $project = $projectModel->composerProject;
         $projectVersion = 'dev';
+        /** @var list<Document> $documents */
         $documents = [];
+
         $providerBindingMap = ($this->providerBindingMapBuilder ?? new ProviderBindingMapBuilder(
             $this->parser,
             $this->traverser,
         ))->build($projectModel);
+        $commandRegistry = (new CommandRegistryBuilder(
+            $this->parser,
+            $this->traverser,
+            $this->symbolNamer,
+        ))->build($projectModel, $projectVersion);
 
         foreach ($this->fileFinder->phpFiles($project) as $absolutePath) {
             $relativePath = str_replace($project->rootPath . '/', '', $absolutePath);
@@ -75,10 +87,28 @@ final class ProjectIndexer
                 $statements,
             );
 
-            $documents[] = $this->augmentLaravelProviderDocument(
+            $document = $this->augmentLaravelProviderDocument(
                 $document,
                 $projectModel,
                 $providerBindingMap,
+                $projectVersion,
+                $absolutePath,
+                $relativePath,
+                $statements,
+            );
+
+            $document = $this->augmentLaravelConsoleDocument(
+                $document,
+                $projectModel,
+                $commandRegistry,
+                $absolutePath,
+                $relativePath,
+                $statements,
+            );
+
+            $documents[] = $this->augmentLaravelEloquentDocument(
+                $document,
+                $projectModel,
                 $projectVersion,
                 $absolutePath,
                 $relativePath,
@@ -164,6 +194,82 @@ final class ProjectIndexer
 
         /** @var list<Occurrence> $occurrences */
         $occurrences = [...$document->occurrences, ...$providerOccurrences];
+
+        return new Document(
+            relativePath: $document->relativePath,
+            occurrences: $occurrences,
+            symbols: $document->symbols,
+        );
+    }
+
+    /** @param list<Stmt> $statements */
+    private function augmentLaravelConsoleDocument(
+        Document $document,
+        ProjectModel $projectModel,
+        CommandRegistry $commandRegistry,
+        string $absolutePath,
+        string $relativePath,
+        array $statements,
+    ): Document {
+        if ($projectModel->framework !== 'laravel') {
+            return $document;
+        }
+
+        if (
+            $relativePath !== 'routes/console.php'
+            && !str_starts_with($relativePath, 'app/Console/Commands/')
+        ) {
+            return $document;
+        }
+
+        $consoleOccurrences = (new ConsoleAnalyzer(
+            traverser: $this->traverser,
+            commandRegistry: $commandRegistry,
+        ))->occurrences($absolutePath, $relativePath, $statements);
+
+        if ($consoleOccurrences === []) {
+            return $document;
+        }
+
+        /** @var list<Occurrence> $occurrences */
+        $occurrences = [...$document->occurrences, ...$consoleOccurrences];
+
+        return new Document(
+            relativePath: $document->relativePath,
+            occurrences: $occurrences,
+            symbols: $document->symbols,
+        );
+    }
+
+    /** @param list<Stmt> $statements */
+    private function augmentLaravelEloquentDocument(
+        Document $document,
+        ProjectModel $projectModel,
+        string $projectVersion,
+        string $absolutePath,
+        string $relativePath,
+        array $statements,
+    ): Document {
+        if (
+            $projectModel->framework !== 'laravel'
+            || !str_starts_with($relativePath, 'app/Models/')
+        ) {
+            return $document;
+        }
+
+        $eloquentOccurrences = (new EloquentAnalyzer(
+            traverser: $this->traverser,
+            symbolNamer: $this->symbolNamer,
+            projectModel: $projectModel,
+            projectVersion: $projectVersion,
+        ))->occurrences($absolutePath, $relativePath, $statements);
+
+        if ($eloquentOccurrences === []) {
+            return $document;
+        }
+
+        /** @var list<Occurrence> $occurrences */
+        $occurrences = [...$document->occurrences, ...$eloquentOccurrences];
 
         return new Document(
             relativePath: $document->relativePath,

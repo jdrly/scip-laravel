@@ -136,3 +136,10 @@ Phase 8 adds provider and container coverage with:
 - `App::bind|singleton(...)` extraction
 - reusable provider binding map construction
 - provider-document snapshots and integration checks
+
+Phase 9 adds model and console coverage with:
+- relation-target linking from supported Eloquent relation methods
+- command registry extraction from `app/Console/Commands`
+- `routes/console.php` command signature linking
+- command-class signature/name linking in command documents
+- model and console document snapshots

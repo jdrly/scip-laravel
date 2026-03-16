@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 final class Photo
 {
-    public function owner(): User
+    public function owner(): BelongsTo
     {
-        return new User();
+        return $this->belongsTo(User::class);
     }
 }

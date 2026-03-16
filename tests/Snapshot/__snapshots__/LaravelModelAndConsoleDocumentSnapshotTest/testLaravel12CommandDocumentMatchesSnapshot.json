@@ -1,0 +1,48 @@
+{
+    "occurrences": [
+        {
+            "range": [
+                6,
+                12,
+                6,
+                28
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Console/Commands/SyncUsersCommand#",
+            "syntaxKind": "type"
+        },
+        {
+            "range": [
+                8,
+                21,
+                8,
+                31
+            ],
+            "role": "definition",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Console/Commands/SyncUsersCommand#$signature.",
+            "syntaxKind": "property"
+        },
+        {
+            "range": [
+                8,
+                34,
+                8,
+                46
+            ],
+            "role": "reference",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Console/Commands/SyncUsersCommand#",
+            "syntaxKind": "string"
+        }
+    ],
+    "relativePath": "app/Console/Commands/SyncUsersCommand.php",
+    "symbols": [
+        {
+            "kind": "class",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Console/Commands/SyncUsersCommand#"
+        },
+        {
+            "kind": "property",
+            "symbol": "scip-laravel composer fixtures/laravel12-app dev App/Console/Commands/SyncUsersCommand#$signature."
+        }
+    ]
+}

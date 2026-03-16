@@ -107,7 +107,7 @@ At this stage, the `index` command writes a deterministic JSON representation of
 
 That is intentional for early development and regression testing. Final protobuf-backed SCIP output will come in later phases.
 
-Laravel fixture projects for versions 12 and 13 now live in `fixtures/laravel12-app` and `fixtures/laravel13-app` and are used to validate framework detection and fixture indexing behavior.
+Laravel fixture projects for versions 12 and 13 now live in `fixtures/laravel12-app` and `fixtures/laravel13-app` and are used to validate framework detection, route analysis, provider analysis, Eloquent relation linking, and console-entrypoint behavior.
 
 ## Cross-version validation
 
@@ -149,3 +149,4 @@ Available scripts:
 ## Notes
 
 The old `scip-php` repository is used only as a reference source for ideas and test strategy. This project is being built as its own standalone implementation.
+t as its own standalone implementation.
