@@ -6,6 +6,8 @@ The format is based on Keep a Changelog and the project uses a SemVer-style vers
 
 ## [Unreleased]
 
+## [0.1.0-rc.1] - 2026-03-17
+
 ### Added
 - Native PHAR build script, PHAR smoke tests, release-artifact build orchestration, and CI PHAR artifact upload.
 - GitHub Release publication workflow with semver tag validation, checksum generation, and changelog-derived release notes.

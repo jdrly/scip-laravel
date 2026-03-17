@@ -218,6 +218,6 @@
     "metadata": {
         "projectRoot": "file://__FIXTURE_ROOT__/plain-php-modern",
         "toolName": "scip-laravel",
-        "toolVersion": "0.1.0-dev"
+        "toolVersion": "0.1.0-rc.1"
     }
 }
