@@ -127,13 +127,16 @@ These commands build a clean container, install dependencies, and run the full q
 ## Release artifacts
 
 Current release-oriented commands:
+- `composer build-phar`
 - `composer build-runtime-image`
 - `composer build-standalone`
+- `composer build-release-artifacts`
+- `composer smoke-test-phar`
 - `composer smoke-test-runtime-image`
 - `composer smoke-test-standalone`
 - `composer smoke-test-release-artifacts`
 
-These scripts currently cover the Docker runtime image and the backup standalone tarball bundle. PHAR packaging is the next planned release artifact so the install story can converge on one primary path.
+These scripts now cover the PHAR, Docker runtime image, and backup standalone tarball bundle. GitHub Releases publication is the next planned step so the install story can converge on one obvious public distribution path.
 
 See `docs/releases.md` for the release workflow, versioning strategy, and distribution plan.
 
@@ -149,7 +152,7 @@ For end users, the install guidance is:
 
 ### Primary install path: PHAR from GitHub Releases
 
-This is the canonical install story for the project once PHAR packaging lands:
+This is the canonical install story for the project once GitHub Releases publication lands:
 
 ```bash
 curl -L <release-url>/scip-laravel.phar -o /usr/local/bin/scip-laravel
@@ -158,6 +161,13 @@ scip-laravel index
 ```
 
 GitHub Releases is the primary publication channel for that artifact.
+
+For local packaging work today, build the PHAR directly from the repository:
+
+```bash
+composer build-phar
+composer smoke-test-phar
+```
 
 ### CI-safe fallback: Docker image
 
@@ -199,7 +209,7 @@ composer smoke-test-standalone
 
 ### Current implementation status
 
-Today this repository can build the Docker image and the standalone tarball locally. PHAR packaging and GitHub Releases publication are the next planned steps; until those land, use a source checkout for local development workflows.
+Today this repository can build the PHAR, Docker image, and standalone tarball locally. GitHub Releases publication and Homebrew distribution are still future phases.
 
 ## Development
 
@@ -224,6 +234,14 @@ Available scripts:
 - `composer test-integration`
 - `composer test-snapshot`
 - `composer test-dora`
+- `composer build-phar`
+- `composer build-runtime-image`
+- `composer build-standalone`
+- `composer build-release-artifacts`
+- `composer smoke-test-phar`
+- `composer smoke-test-runtime-image`
+- `composer smoke-test-standalone`
+- `composer smoke-test-release-artifacts`
 - `composer check-docker-8.4`
 - `composer check-docker-8.5`
 - `composer check-matrix`

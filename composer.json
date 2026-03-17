@@ -69,11 +69,38 @@
         "test-integration": "phpunit --testsuite integration --no-coverage",
         "test-snapshot": "phpunit --testsuite snapshot --no-coverage",
         "test-dora": "phpunit tests/DoraIntegration --no-coverage",
-        "build-runtime-image": "bash tools/release/build-runtime-image.sh 8.5",
-        "build-standalone": "bash tools/release/build-standalone.sh",
-        "smoke-test-runtime-image": "bash tools/release/smoke-test-runtime-image.sh 8.5",
-        "smoke-test-standalone": "bash tools/release/smoke-test-standalone.sh",
-        "smoke-test-release-artifacts": "bash tools/release/smoke-test-release-artifacts.sh",
+        "build-phar": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -d phar.readonly=0 tools/release/build-phar.php"
+        ],
+        "build-runtime-image": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/build-runtime-image.sh 8.5"
+        ],
+        "build-standalone": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/build-standalone.sh"
+        ],
+        "build-release-artifacts": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/build-release-artifacts.sh"
+        ],
+        "smoke-test-phar": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/smoke-test-phar.sh"
+        ],
+        "smoke-test-runtime-image": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/smoke-test-runtime-image.sh 8.5"
+        ],
+        "smoke-test-standalone": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/smoke-test-standalone.sh"
+        ],
+        "smoke-test-release-artifacts": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/smoke-test-release-artifacts.sh"
+        ],
         "check-docker-8.4": "bash tools/docker/check.sh 8.4",
         "check-docker-8.5": "bash tools/docker/check.sh 8.5",
         "check-matrix": "bash tools/docker/check-matrix.sh",

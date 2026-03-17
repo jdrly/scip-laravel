@@ -14,10 +14,11 @@ This keeps the tool out of the indexed application's Composer graph while still 
 ## Current implementation status
 
 Today the repository can build and smoke-test these release-oriented artifacts:
+- PHAR
 - Docker runtime image
 - standalone tarball bundle
 
-PHAR packaging and GitHub Releases publication are planned next. Until that work lands, the tarball should be treated as a backup artifact rather than the main installation path.
+GitHub Releases publication is planned next. The tarball remains a backup artifact rather than the main installation path.
 
 ## Versioning strategy
 
@@ -52,6 +53,12 @@ Docker images remain important, but they are positioned as the reliable fallback
 
 ## Build commands
 
+### Build PHAR
+
+```bash
+php -d phar.readonly=0 tools/release/build-phar.php
+```
+
 ### Build Docker runtime image
 
 ```bash
@@ -64,7 +71,24 @@ bash tools/release/build-runtime-image.sh 8.5
 bash tools/release/build-standalone.sh
 ```
 
+### Build all current release artifacts
+
+```bash
+bash tools/release/build-release-artifacts.sh
+```
+
 ## Smoke tests
+
+### PHAR smoke test
+
+```bash
+bash tools/release/smoke-test-phar.sh
+```
+
+The PHAR smoke test exercises:
+- `fixtures/plain-php-modern`
+- `fixtures/laravel12-app`
+- `fixtures/laravel13-app`
 
 ### Docker smoke test
 

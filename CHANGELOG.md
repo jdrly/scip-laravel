@@ -7,9 +7,10 @@ The format is based on Keep a Changelog and the project uses a SemVer-style vers
 ## [Unreleased]
 
 ### Added
+- Native PHAR build script, PHAR smoke tests, and release-artifact build orchestration.
 - Docker runtime image packaging.
 - Standalone tarball bundle packaging.
 - Release artifact smoke-test scripts.
 
 ### Changed
-- README and release documentation now declare PHAR as the primary install artifact, GitHub Releases as the main publish channel, Docker as the CI-safe fallback, and the standalone tarball as backup-only.
+- README, testing documentation, and release documentation now describe the PHAR build flow, PHAR smoke tests, and the canonical distribution order.
