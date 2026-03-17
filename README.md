@@ -136,7 +136,7 @@ Current release-oriented commands:
 - `composer smoke-test-standalone`
 - `composer smoke-test-release-artifacts`
 
-These scripts now cover the PHAR, Docker runtime image, and backup standalone tarball bundle. GitHub Releases publication is the next planned step so the install story can converge on one obvious public distribution path.
+These scripts now cover the PHAR, Docker runtime image, and backup standalone tarball bundle. CI now builds and smoke-tests the PHAR artifact; GitHub Releases publication is the next planned step so the install story can converge on one obvious public distribution path.
 
 See `docs/releases.md` for the release workflow, versioning strategy, and distribution plan.
 

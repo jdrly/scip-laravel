@@ -18,7 +18,7 @@ Today the repository can build and smoke-test these release-oriented artifacts:
 - Docker runtime image
 - standalone tarball bundle
 
-GitHub Releases publication is planned next. The tarball remains a backup artifact rather than the main installation path.
+CI now builds the PHAR and uploads it as a workflow artifact. GitHub Releases publication is planned next. The tarball remains a backup artifact rather than the main installation path.
 
 ## Versioning strategy
 

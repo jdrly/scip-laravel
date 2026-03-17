@@ -72,8 +72,18 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction --no-progress
 
+      - name: Build PHAR
+        run: composer build-phar
+
       - name: Smoke-test PHAR
-        run: composer smoke-test-phar
+        run: bash tools/release/smoke-test-phar.sh dist/scip-laravel-*.phar
+
+      - name: Upload PHAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scip-laravel-phar
+          path: dist/scip-laravel-*.phar
+          if-no-files-found: error
 
   audit:
     runs-on: ubuntu-latest

@@ -7,7 +7,7 @@ The format is based on Keep a Changelog and the project uses a SemVer-style vers
 ## [Unreleased]
 
 ### Added
-- Native PHAR build script, PHAR smoke tests, and release-artifact build orchestration.
+- Native PHAR build script, PHAR smoke tests, release-artifact build orchestration, and CI PHAR artifact upload.
 - Docker runtime image packaging.
 - Standalone tarball bundle packaging.
 - Release artifact smoke-test scripts.

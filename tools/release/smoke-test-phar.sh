@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-PHAR_PATH="$(php -d phar.readonly=0 "$PROJECT_ROOT/tools/release/build-phar.php")"
+PHAR_PATH="${1:-$(php -d phar.readonly=0 "$PROJECT_ROOT/tools/release/build-phar.php")}"
 TEMP_DIR="$(mktemp -d)"
 
 cleanup() {
