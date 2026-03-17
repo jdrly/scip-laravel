@@ -74,10 +74,13 @@ That split is borrowed directly from the spirit of the original `scip-php` suite
 - `composer build-runtime-image`
 - `composer build-standalone`
 - `composer build-release-artifacts`
+- `composer publish-github-release`
 - `composer smoke-test-phar`
 - `composer smoke-test-runtime-image`
 - `composer smoke-test-standalone`
 - `composer smoke-test-release-artifacts`
+
+The release-artifact smoke test now targets the GitHub Release asset set specifically: PHAR, standalone tarball, and checksums. Docker validation remains separate via the runtime-image scripts.
 
 ## Cross-version validation
 

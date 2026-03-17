@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      - name: Validate composer
+        run: composer validate --strict --check-lock
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Run quality gate
+        run: composer check
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash tools/release/publish-github-release.sh "$GITHUB_REF_NAME"

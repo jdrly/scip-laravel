@@ -131,12 +131,13 @@ Current release-oriented commands:
 - `composer build-runtime-image`
 - `composer build-standalone`
 - `composer build-release-artifacts`
+- `composer publish-github-release`
 - `composer smoke-test-phar`
 - `composer smoke-test-runtime-image`
 - `composer smoke-test-standalone`
 - `composer smoke-test-release-artifacts`
 
-These scripts now cover the PHAR, Docker runtime image, and backup standalone tarball bundle. CI now builds and smoke-tests the PHAR artifact; GitHub Releases publication is the next planned step so the install story can converge on one obvious public distribution path.
+These scripts now cover the PHAR, standalone tarball, checksums, and GitHub Release publication flow. Docker remains a separate runtime distribution path. CI now builds and smoke-tests the PHAR artifact, and semver tags can drive GitHub Releases publication.
 
 See `docs/releases.md` for the release workflow, versioning strategy, and distribution plan.
 
@@ -209,7 +210,7 @@ composer smoke-test-standalone
 
 ### Current implementation status
 
-Today this repository can build the PHAR, Docker image, and standalone tarball locally. GitHub Releases publication and Homebrew distribution are still future phases.
+Today this repository can build the PHAR, standalone tarball, checksums, and Docker image locally. GitHub Releases publication is wired through a dedicated tag-driven workflow, while Homebrew distribution is still a future phase.
 
 ## Development
 
@@ -238,6 +239,7 @@ Available scripts:
 - `composer build-runtime-image`
 - `composer build-standalone`
 - `composer build-release-artifacts`
+- `composer publish-github-release`
 - `composer smoke-test-phar`
 - `composer smoke-test-runtime-image`
 - `composer smoke-test-standalone`

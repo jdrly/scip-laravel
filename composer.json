@@ -85,6 +85,10 @@
             "Composer\\Config::disableProcessTimeout",
             "bash tools/release/build-release-artifacts.sh"
         ],
+        "publish-github-release": [
+            "Composer\\Config::disableProcessTimeout",
+            "bash tools/release/publish-github-release.sh"
+        ],
         "smoke-test-phar": [
             "Composer\\Config::disableProcessTimeout",
             "bash tools/release/smoke-test-phar.sh"

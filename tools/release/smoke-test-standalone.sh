@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-ARCHIVE_PATH="$($PROJECT_ROOT/tools/release/build-standalone.sh)"
+ARCHIVE_PATH="${1:-$($PROJECT_ROOT/tools/release/build-standalone.sh)}"
 TEMP_DIR="$(mktemp -d)"
 OUTPUT_PATH="$TEMP_DIR/index.scip"
 FIXTURE_PATH="$PROJECT_ROOT/fixtures/plain-php-modern"
